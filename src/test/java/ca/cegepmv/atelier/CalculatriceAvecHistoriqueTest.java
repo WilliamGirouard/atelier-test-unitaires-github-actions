@@ -52,23 +52,30 @@ class CalculatriceAvecHistoriqueTest {
 
     @Test
     void additionnerEnregistreUneEntreeDansLeJournal() {
-        // TODO: Act
-        // Appelez calculatrice.additionner(2, 3)
 
-        // TODO: Assert
+        // Appelez calculatrice.additionner(2, 3)
+        int result = calculatrice.additionner(2, 3);
+
+        verify(journalMock).enregistrer("2 + 3 = 5");
         // Utilisez verify(journalMock).enregistrer(...) pour vérifier qu'un message a bien
         // été enregistré. Astuce : vous pouvez vérifier le message exact attendu :
         // verify(journalMock).enregistrer("2 + 3 = 5");
-        fail("Test à compléter");
     }
 
     @Test
     void diviserParZeroNeFaitAucunEnregistrementDansLeJournal() {
-        // TODO: Act + Assert
+
+        //assert
+        ArithmeticException exception = assertThrows(
+            ArithmeticException.class, 
+            () -> calculatrice.diviser(10, 0));
+
+        assertNotNull(exception.getMessage());
+        verify(journalMock, never()).enregistrer(anyString());
         // Vérifiez que diviser(10, 0) lance bien une ArithmeticException (comme avant),
         // ET utilisez verify(journalMock, never()).enregistrer(anyString()) pour vérifier
         // qu'aucun message n'a été enregistré dans ce cas (puisque l'exception est lancée
         // AVANT l'appel à journal.enregistrer(...)).
-        fail("Test à compléter");
+
     }
 }

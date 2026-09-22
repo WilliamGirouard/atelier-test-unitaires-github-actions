@@ -20,3 +20,8 @@ jobs:
               run: chmod +x mvnw
             - name: Compilation du projet Maven
               run: ./mvnw compile
+
+#Ecrire les 17 tests qui echouent actuellement 
+# Ajouter une etape qui execute les tests que si la compilation reussi
+            - name: Build and run tests
+              run: ./mvnw -B clean verify
