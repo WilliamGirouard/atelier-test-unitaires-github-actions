@@ -20,8 +20,19 @@ jobs:
               run: chmod +x mvnw
             - name: Compilation du projet Maven
               run: ./mvnw compile
-
 #Ecrire les 17 tests qui echouent actuellement 
 # Ajouter une etape qui execute les tests que si la compilation reussi
             - name: Build and run tests
               run: ./mvnw -B clean verify
+            - name: Publier le  rapport des tests
+              uses: actions/upload-artifact@v5
+              with:
+                name: rapport-jacoco
+                path: target/site/jacoco/
+            - name: Build
+              run: ./mvnw -B clean package -DskipTests
+            - name: Publier le .jar en artefact
+              uses: actions/upload-artifact@v5
+              with:
+                name: application-jar
+                path: target/*.jar
