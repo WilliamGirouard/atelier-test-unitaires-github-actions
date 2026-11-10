@@ -21,7 +21,10 @@ jobs:
             java-version: '25'
             distribution: 'temurin'
             cache: maven
-
+        - name: Fournir access au runner
+          run: chmod +x mvnw
+        - name: Compilation du projet Maven
+          run: ./mvnw compile
         - name: Build, tests et analyse SonarCloud
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
