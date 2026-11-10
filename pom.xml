@@ -23,7 +23,7 @@
         <junit.version>6.0.3</junit.version>
         <mockito.version>5.14.2</mockito.version>
         <!-- SonarQube configuration -->
-        <sonar.organization>Lucky</sonar.organization>
+        <sonar.organization>williamgirouard</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
